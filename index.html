@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oblivion Recovery System</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    color:#00ff66;
+    font-family:Consolas, monospace;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:700px;
+    border:1px solid #00ff66;
+    padding:40px;
+    box-shadow:0 0 20px rgba(0,255,100,.25);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+    letter-spacing:3px;
+}
+
+.info{
+    margin:15px 0;
+}
+
+input{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    background:black;
+    border:1px solid #00ff66;
+    color:#00ff66;
+    font-size:18px;
+    outline:none;
+}
+
+button{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    background:#00ff66;
+    color:black;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:18px;
+}
+
+button:hover{
+    background:#66ff99;
+}
+
+#mensagem{
+    margin-top:20px;
+    min-height:25px;
+}
+
+#barra{
+    display:none;
+    width:100%;
+    height:22px;
+    border:1px solid #00ff66;
+    margin-top:20px;
+}
+
+#progresso{
+    height:100%;
+    width:0%;
+    background:#00ff66;
+}
+
+#video{
+    display:none;
+    margin-top:25px;
+}
+
+video{
+    width:100%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>OBLIVION NEUROTECH INDUSTRIES</h1>
+
+<div class="info">RECOVERY SYSTEM v3.2</div>
+
+<div class="info">
+Arquivo encontrado:
+<strong>EDEN_CAM03.mp4</strong>
+</div>
+
+<div class="info">
+STATUS:
+<span style="color:red;">CRIPTOGRAFADO</span>
+</div>
+
+<br>
+
+Digite a primeira chave obtida durante a investigação.
+
+<input
+type="password"
+id="senha"
+placeholder="Senha de acesso">
+
+<button onclick="entrar()">
+DESBLOQUEAR
+</button>
+
+<div id="mensagem"></div>
+
+<div id="barra">
+<div id="progresso"></div>
+</div>
+
+<div id="video">
+
+<h2>Acesso Concedido</h2>
+
+<video controls>
+<source src="video.mp4" type="video/mp4">
+</video>
+
+</div>
+
+</div>
+
+<script>
+
+function entrar(){
+
+const senha=document.getElementById("senha").value.toUpperCase();
+
+if(senha=="OBLIVION"){
+
+document.getElementById("mensagem").innerHTML="Credenciais aceitas...";
+
+document.getElementById("barra").style.display="block";
+
+let p=0;
+
+let intervalo=setInterval(function(){
+
+p++;
+
+document.getElementById("progresso").style.width=p+"%";
+
+document.getElementById("mensagem").innerHTML=
+"Descriptografando arquivo... "+p+"%";
+
+if(p>=100){
+
+clearInterval(intervalo);
+
+document.getElementById("mensagem").innerHTML=
+"✓ ACESSO AUTORIZADO";
+
+document.getElementById("video").style.display="block";
+
+}
+
+},35);
+
+}else{
+
+document.getElementById("mensagem").innerHTML=
+"❌ CHAVE INVÁLIDA";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
